@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Role-based Visibility Test</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    [data-role] {
+      display: none;
+    }
+    .card {
+      padding: 1rem;
+      margin: 1rem 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Role-based Visibility Demo</h1>
+
+  <div class="card" data-role="teacher">Visible to: TEACHER</div>
+  <div class="card" data-role="student">Visible to: STUDENT</div>
+  <div class="card" data-role="unknown">Visible to: UNKNOWN</div>
+
+  <p>
+    Current role: <strong id="currentRole"></strong><br>
+    <button onclick="setRole('teacher')">Set as Teacher</button>
+    <button onclick="setRole('student')">Set as Student</button>
+    <button onclick="setRole('unknown')">Set as Unknown</button>
+    <button onclick="clearRole()">Clear</button>
+  </p>
+
+  <script>
+    function applyRole(role) {
+      document.getElementById("currentRole").textContent = role || "none";
+      document.querySelectorAll("[data-role]").forEach((el) => {
+        el.style.display = (el.dataset.role === role) ? "" : "none";
+      });
+    }
+
+    function setRole(role) {
+      localStorage.setItem("feide_role", role);
+      applyRole(role);
+    }
+
+    function clearRole() {
+      localStorage.removeItem("feide_role");
+      location.reload();
+    }
+
+    // Load from localStorage on page load
+    const currentRole = localStorage.getItem("feide_role");
+    applyRole(currentRole);
+  </script>
+</body>
+</html>
