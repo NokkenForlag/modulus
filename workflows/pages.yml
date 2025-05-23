@@ -1,5 +1,0 @@
-# Clean GitHub Actions workflow for GitHub Pages
-# Temporarily disabled due to GitHub API artifact bug
-# Safe to re-enable later by restoring deploy workflow
-
-# See README for fallback deployment via gh-pages CLI
