@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Authenticating...</title>
+  <script>
+    // Extract role from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const role = urlParams.get("role");
+
+    const allowedRoles = ["teacher", "student"];
+
+    if (role && allowedRoles.includes(role)) {
+      // Store in localStorage (can also use cookie if needed)
+      localStorage.setItem("modulus:role", role);
+
+      // Redirect user to Webflow portal or fallback page
+      window.location.href = "https://nokkenforlag.no/modulus/portal";
+    } else {
+      document.getElementById("status").textContent = "Invalid role or redirect URL.";
+    }
+  </script>
+</head>
+<body>
+  <p id="status">Authenticating... Please wait.</p>
+</body>
+</html>

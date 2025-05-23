@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Modulus</title>
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/layout.css" />
+  <link rel="stylesheet" href="../styles/components.css" />
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(to right, #f4f6f8, #eaeef2);
+      min-height: 100vh;
+    }
+
+    .login-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      background-color: #005aa7;
+      color: white;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    .login-button:hover {
+      background-color: #004080;
+    }
+</style>
+  <script>
+    // TODO: Replace this dummy check with real Webflow login detection (e.g., cookie/token)
+    const isWebflowUser = document.cookie.includes("wf_logged_in=true");
+    if (isWebflowUser) {
+      window.location.href = "https://nokkenforlag.no/user-account";
+    }
+  </script>
+</head>
+<body>
+  <img src="../assets/logo.svg" alt="Modulus logo" style="width: 180px; margin-bottom: 2rem;" />
+  <h1>Velkommen til Modulus</h1>
+  <p style="max-width: 420px; text-align: center; margin-top: 0.5rem;">
+    Modulus er en interaktiv fagplattform i matematikk. Du kan logge inn som elev/lærer via Feide, eller som privatperson via Nøkken Forlag.
+  </p>
+  <a href="http://localhost:3000/api/feide/login">
+    <button class="login-button">
+      <img src="../assets/icons/feide.svg" alt="" style="height: 1.4rem;" />
+      Logg inn med Feide
+    </button>
+  </a>
+  <div style="margin: 2rem 0; text-align: center;">
+    <hr style="width: 200px; border: none; height: 1px; background: #ccc; margin: 1rem auto;" />
+    <p>eller logg inn som privatperson</p>
+    <a href="https://nokkenforlag.no/log-in" id="webflowLoginLink">
+      <button class="login-button" style="background-color: #888;">🧑 Logg inn med Nøkken Forlag</button>
+    </a>
+  </div>
+  <p style="margin-top: 3rem; font-size: 0.9rem; color: #888;">
+    <a href="?dev=true">Fortsett uten innlogging</a>
+  </p>
+</body>
+</html>
