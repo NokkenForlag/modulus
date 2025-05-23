@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Frontend for Modulus learning platform",
   "scripts": {
-    "deploy": "gh-pages -d frontend"
+    "deploy": "gh-pages -d frontend/docs"
   },
   "author": "Ken Robert Klaveness",
   "license": "ISC",
