@@ -1,3 +1,4 @@
+import { feideRouter } from "./routes/feideRoutes";
 import express from "express";
 import dotenv from "dotenv";
 
@@ -7,6 +8,7 @@ const app = express();
 
 app.get("/ping", (_, res) => {
   res.send("pong ✅");
+  app.use("/api/feide", feideRouter);
 });
 
 const port = process.env.PORT || 3000;
