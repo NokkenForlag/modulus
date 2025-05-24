@@ -27,7 +27,7 @@ exports.feideRouter.get("/callback", async (req, res) => {
     if (code === "mock") {
   const id_token = "test-id-token-123";
   const access_token = "mock-access-token-abc";
-  res.redirect(`https://modulus.nokkenforlag.no/auth-bridge.html?id_token=${id_token}&access_token=${access_token}`);
+  res.redirect(`https://nokkenforlag.github.io/modulus/auth-bridge.html?id_token=${id_token}&access_token=${access_token}`);
   return;
 }
     }
