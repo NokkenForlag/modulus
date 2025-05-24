@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <title>Logger ut...</title>
+  <script>
+    localStorage.removeItem("id_token");
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("feide_role");
+
+    // Til portal etter utlogging
+    window.location.href = "https://www.nokkenforlag.no/modulus/portal";
+  </script>
+</head>
+<body>
+  <p>🔐 Logger ut...</p>
+</body>
+</html>
