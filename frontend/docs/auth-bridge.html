@@ -1,27 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
   <meta charset="UTF-8" />
-  <title>Authenticating...</title>
+  <title>Logger inn...</title>
   <script>
-    // Extract role from URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const role = urlParams.get("role");
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      const id_token = params.get("id_token");
+      const access_token = params.get("access_token");
 
-    const allowedRoles = ["teacher", "student"];
+      if (id_token && access_token) {
+        // 🔐 Lagre i localStorage
+        localStorage.setItem("id_token", id_token);
+        localStorage.setItem("access_token", access_token);
 
-    if (role && allowedRoles.includes(role)) {
-      // Store in localStorage (can also use cookie if needed)
-      localStorage.setItem("modulus:role", role);
+        // 🧠 Sett dummy-rolle
+        localStorage.setItem("feide_role", "elev");
 
-      // Redirect user to Webflow portal or fallback page
-      window.location.href = "https://nokkenforlag.no/modulus/portal";
-    } else {
-      document.getElementById("status").textContent = "Invalid role or redirect URL.";
-    }
+        // ✅ Gå videre til portalen
+        window.location.href = "/portal";
+      } else {
+        document.body.innerHTML = "<p>❌ Klarte ikke hente token fra URL.</p>";
+      }
+    };
   </script>
 </head>
 <body>
-  <p id="status">Authenticating... Please wait.</p>
+  <p>🔄 Logger inn og lagrer rolle...</p>
 </body>
 </html>
