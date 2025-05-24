@@ -25,11 +25,11 @@ exports.feideRouter.get("/callback", async (req, res) => {
     }
     // ✅ Simulert mock-login
     if (code === "mock") {
-  const id_token = "test-id-token-123";
-  const access_token = "mock-access-token-abc";
-  res.redirect(`https://nokkenforlag.github.io/modulus/auth-bridge.html?id_token=${id_token}&access_token=${access_token}`);
-  return;
-}
+        const id_token = "test-id-token-123";
+        const access_token = "mock-access-token-abc";
+        const redirectURL = `${process.env.FRONTEND_REDIRECT_URI}?id_token=${id_token}&access_token=${access_token}`;
+        res.redirect(302, redirectURL);
+        return;
     }
     try {
         const response = await axios_1.default.post(process.env.FEIDE_TOKEN_ENDPOINT, new URLSearchParams({
