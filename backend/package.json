@@ -7,7 +7,7 @@
     "lib": "lib"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node dist/index.js"
     "dev": "npx ts-node index.ts",
     "build": "tsc"
   },

@@ -5,7 +5,7 @@ const allowedOrigins = [
   "https://www.nokkenforlag.no"
 ];
 
-export function corsMiddleware(req: Request, res: Response, next: NextFunction) {
+export function corsMiddleware(req: Request, res: Response, next: NextFunction): void {
   const origin = req.headers.origin || "";
 
   if (allowedOrigins.includes(origin)) {
@@ -16,7 +16,8 @@ export function corsMiddleware(req: Request, res: Response, next: NextFunction) 
   }
 
   if (req.method === "OPTIONS") {
-    return res.sendStatus(200);
+    res.sendStatus(200);
+    return;
   }
 
   next();
