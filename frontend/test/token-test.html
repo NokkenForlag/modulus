@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>🔍 Token Test</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 2rem;
+      background: #f9f9f9;
+    }
+    code {
+      background: #eee;
+      padding: 0.5em;
+      display: block;
+      margin-top: 0.5rem;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <h1>🧪 Feide Token Debug</h1>
+
+  <p><strong>id_token:</strong></p>
+  <code id="idToken"></code>
+
+  <p><strong>access_token:</strong></p>
+  <code id="accessToken"></code>
+
+  <p><strong>feide_role:</strong></p>
+  <code id="feideRole"></code>
+
+  <script>
+    document.getElementById("idToken").textContent = localStorage.getItem("id_token") || "(not found)";
+    document.getElementById("accessToken").textContent = localStorage.getItem("access_token") || "(not found)";
+    document.getElementById("feideRole").textContent = localStorage.getItem("feide_role") || "(not found)";
+  </script>
+</body>
+</html>
