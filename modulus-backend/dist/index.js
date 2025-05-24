@@ -8,11 +8,16 @@ const dotenv_1 = __importDefault(require("dotenv"));
 const feideRoutes_1 = require("./routes/feideRoutes");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
-// 🟢 Koble til Feide-router først
+app.use(express_1.default.json());
+// Koble til Feide-router
 app.use("/api/feide", feideRoutes_1.feideRouter);
-// 🔁 Eksempel: ping-rute
+// Ping-test
 app.get("/ping", (_, res) => {
     res.send("pong ✅");
+});
+// Fallback for ukjente ruter (må være sist!)
+app.use((req, res) => {
+    res.status(404).json({ message: "Route not found" });
 });
 const port = process.env.PORT || 3000;
 app.listen(port, () => {

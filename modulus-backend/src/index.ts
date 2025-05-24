@@ -6,12 +6,19 @@ dotenv.config();
 
 const app = express();
 
-// 🟢 Koble til Feide-router først
+app.use(express.json());
+
+// Koble til Feide-router
 app.use("/api/feide", feideRouter);
 
-// 🔁 Eksempel: ping-rute
+// Ping-test
 app.get("/ping", (_, res) => {
   res.send("pong ✅");
+});
+
+// Fallback for ukjente ruter (må være sist!)
+app.use((req, res) => {
+  res.status(404).json({ message: "Route not found" });
 });
 
 const port = process.env.PORT || 3000;
