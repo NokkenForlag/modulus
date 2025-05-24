@@ -23,13 +23,17 @@ feideRouter.get("/callback", async (req: Request, res: Response): Promise<void> 
 
   // ✅ Simulert mock-login
   if (code === "mock") {
-  const id_token = "test-id-token-123";
-  const access_token = "mock-access-token-abc";
+    if (!process.env.FRONTEND_REDIRECT_URI) {
+      res.status(500).send("Missing FRONTEND_REDIRECT_URI in environment");
+      return;
+    }
+    const id_token = "test-id-token-123";
+    const access_token = "mock-access-token-abc";
 
-  const redirectURL = `${process.env.FRONTEND_REDIRECT_URI}?id_token=${id_token}&access_token=${access_token}`;
-  res.redirect(302, redirectURL);
-  return;
-}
+    const redirectURL = `${process.env.FRONTEND_REDIRECT_URI}?id_token=${id_token}&access_token=${access_token}`;
+    res.redirect(302, redirectURL);
+    return;
+  }
 
   try {
     const response = await axios.post(
@@ -49,10 +53,15 @@ feideRouter.get("/callback", async (req: Request, res: Response): Promise<void> 
     );
 
     const { id_token, access_token } = response.data;
+    if (!id_token || !access_token) {
+      res.status(500).send("Missing tokens in Feide response");
+      return;
+    }
     res.json({ id_token, access_token });
 
   } catch (err: any) {
     console.error("Token exchange failed:", err.response?.data || err.message);
+    console.error("Full Feide token error:", err);
     res.status(500).send("Token exchange failed");
   }
 });

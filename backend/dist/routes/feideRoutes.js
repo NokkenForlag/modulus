@@ -25,6 +25,10 @@ exports.feideRouter.get("/callback", async (req, res) => {
     }
     // ✅ Simulert mock-login
     if (code === "mock") {
+        if (!process.env.FRONTEND_REDIRECT_URI) {
+            res.status(500).send("Missing FRONTEND_REDIRECT_URI in environment");
+            return;
+        }
         const id_token = "test-id-token-123";
         const access_token = "mock-access-token-abc";
         const redirectURL = `${process.env.FRONTEND_REDIRECT_URI}?id_token=${id_token}&access_token=${access_token}`;
@@ -44,10 +48,15 @@ exports.feideRouter.get("/callback", async (req, res) => {
             }
         });
         const { id_token, access_token } = response.data;
+        if (!id_token || !access_token) {
+            res.status(500).send("Missing tokens in Feide response");
+            return;
+        }
         res.json({ id_token, access_token });
     }
     catch (err) {
         console.error("Token exchange failed:", err.response?.data || err.message);
+        console.error("Full Feide token error:", err);
         res.status(500).send("Token exchange failed");
     }
 });
