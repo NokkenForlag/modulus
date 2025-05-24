@@ -23,10 +23,11 @@ feideRouter.get("/callback", async (req: Request, res: Response): Promise<void> 
 
   // ✅ Simulert mock-login
   if (code === "mock") {
-  res.json({
-    id_token: "test-id-token-123",
-    access_token: "mock-access-token-abc"
-  });
+  const id_token = "test-id-token-123";
+  const access_token = "mock-access-token-abc";
+
+  const redirectURL = `${process.env.FRONTEND_REDIRECT_URI}?id_token=${id_token}&access_token=${access_token}`;
+  res.redirect(302, redirectURL);
   return;
 }
 
