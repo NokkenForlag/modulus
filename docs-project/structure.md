@@ -1,8 +1,6 @@
+# 🏗️ Modulus Architecture and Structure
 
-
-# 🧭 Modulus Prosjektstruktur (Backend + Frontend)
-
-Dette dokumentet gir en oversikt over gjeldende mappe- og modulstruktur for Modulus-prosjektet.
+This document provides an overview of the current folder and module structure for the Modulus project.
 
 ---
 
@@ -10,55 +8,58 @@ Dette dokumentet gir en oversikt over gjeldende mappe- og modulstruktur for Modu
 
 ```
 backend/
-├── public/                  # Statisk tilgjengelige filer via Express
-│   ├── js/                  # Egendefinerte moduler som brukes i Webflow
-│   │   └── index.mjs
-│   ├── styles/              # CSS-stiler
-│   │   └── styles.css
-│   └── assets/fonts/        # WOFF/WOFF2-fonter til Webflow
+├── public/                  # Static files served by Express
+│   ├── js/                  # Custom modules used in Webflow
+│   └── assets/
+│       ├── fonts/           # WOFF/WOFF2 fonts
+│       └── rive/            # Rive animations
 │
-├── src/                    # TypeScript-kilde
+├── src/                    # TypeScript source
 │   ├── index.ts            # Express entry point
-│   ├── routes/             # API-ruter (f.eks. /api/feide)
+│   ├── routes/             # API routes (e.g., /api/feide)
 │   │   └── feideRoutes.ts
-│   └── services/           # Auth-logikk og hjelpefunksjoner
+│   └── services/           # Auth logic and helper functions
 │       └── authService.ts
 │
-├── .env                    # Miljøvariabler (lokalt)
-├── .env.example            # Eksempel .env for utviklere
-├── .gitignore              # Git-unntak (dist, node_modules, .env)
-├── package.json            # NPM metadata og scripts
-├── tsconfig.json           # TypeScript-konfig
-├── README.md               # Dokumentasjon
+├── .env                    # Environment variables (local)
+├── .env.example            # Example .env for developers
+├── .gitignore              # Git exclusions (dist, node_modules, .env)
+├── package.json            # NPM metadata and scripts
+├── tsconfig.json           # TypeScript config
+├── README.md               # Documentation
 ```
 
 ---
 
-## 📁 Frontend (valgfritt ved migrering fra Webflow)
+## 📁 Frontend (optional when migrating from Webflow)
 
 ```
 frontend/
-├── test/                   # Eksperimentelle filer (f.eks. auth-bridge.html)
-├── js/                     # Midlertidig JS før flytt til backend/public/js
-├── styles/                 # Midlertidig CSS før flytt til backend/public/styles
-├── index.html              # Root for GH Pages / statisk visning
+├── public/
+│   ├── assets/
+│   │   ├── fonts/             # Custom fonts
+│   │   └── styles/            # CSS styles used by Webflow or iFrame content
+│   ├── pages/                 # Static HTML content (exported from Webflow or manually created)
+│   └── test/                  # Dev tools and debug views (auth view, token tests, etc.)
+├── index.html                 # Temporary main page (can be replaced by Webflow portal)
+├── auth.html, auth-bridge.html, logg-ut.html, _headers  # Various support files for auth in iFrame
+└── README.md
 ```
 
 ---
 
-## 🔄 Kompilert Output (automatisk)
+## 🔄 Compiled Output (automatic)
 
 ```
-backend/dist/               # Auto-generert JS fra TypeScript (aldri commit!)
+backend/dist/               # Auto-generated JS from TypeScript (never commit!)
 ```
 
 ---
 
-## ✅ Standardkonvensjoner
+## ✅ Standard Conventions
 
-- Alle statiske ressurser (JS/CSS/font) serveres fra `backend/public/`
-- All funksjonell kode ligger i `backend/src/`
-- Webflow peker til backend-URL-er for autentisering og ressurser
-- GitHub Pages kan deaktiveres når Render tar full overlevering
+- All static resources (JS/CSS/fonts) are served from `backend/public/`
+- All functional code resides in `backend/src/`
+- Webflow points to backend URLs for authentication and resources
 
 ---

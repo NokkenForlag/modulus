@@ -1,6 +1,3 @@
-
-
-
 # Feide Integration Plan
 
 This document outlines the architecture, configuration, and flow for integrating Feide authentication into the Modulus hybrid platform using a custom backend and login redirect via `auth.html`.
@@ -28,7 +25,7 @@ To allow school users to log in securely using Feide (via OpenID Connect) and ga
    - Role inferred (e.g., student, teacher)
 
 4. **Bridge Redirect**
-   - Redirects to `https://nokkenforlag.github.io/modulus/auth-bridge.html?role=teacher`
+   - Redirects to `https://modulus-frontend.onrender.com/auth-bridge.html?role=teacher`
    - `auth-bridge.html` sets `localStorage` or `cookie` with `feide_role=teacher`
 
 5. **Webflow Access**
@@ -58,6 +55,8 @@ To allow school users to log in securely using Feide (via OpenID Connect) and ga
   - Conditionally show/hide blocks with `[data-role="teacher"]`, etc.
   - Redirect unauthorized users to a `no-access.html` page
 
+Note: `auth-bridge.html` and frontend assets are now hosted on the Render frontend environment (`https://modulus-frontend.onrender.com`).
+
 Example Webflow script:
 ```js
 const role = localStorage.getItem('feide_role');
@@ -72,7 +71,7 @@ if (role === 'teacher') {
 
 - [x] Feide client created in Dataporten
 - [x] Backend login and callback routes implemented
-- [ ] `auth-bridge.html` deployed to GitHub Pages
+- [x] auth-bridge.html hosted on Render frontend
 - [ ] Webflow custom code added for role gating
 - [ ] Redirects and protection tested
 
