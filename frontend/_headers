@@ -1,0 +1,4 @@
+/js/index.mjs
+  Access-Control-Allow-Origin: https://*.webflow.com
+  Access-Control-Allow-Methods: GET
+  Access-Control-Allow-Headers: Content-Type
