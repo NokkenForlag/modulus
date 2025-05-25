@@ -1,4 +1,15 @@
+/Users/kenrobertklaveness/Documents/GitHub/Nokken/modulus/frontend/_headers
 /js/index.mjs
+  Access-Control-Allow-Origin: https://*.webflow.com
+  Access-Control-Allow-Methods: GET
+  Access-Control-Allow-Headers: Content-Type
+
+/styles/styles.css
+  Access-Control-Allow-Origin: https://*.webflow.com
+  Access-Control-Allow-Methods: GET
+  Access-Control-Allow-Headers: Content-Type
+
+/assets/fonts/*.woff2
   Access-Control-Allow-Origin: https://*.webflow.com
   Access-Control-Allow-Methods: GET
   Access-Control-Allow-Headers: Content-Type
