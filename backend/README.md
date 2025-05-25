@@ -1,9 +1,3 @@
-oboe-verktøyet mitt er utilgjengelig akkurat nå, men her er en ferdig versjon av README.md-filen du kan lime inn i rotmappen til modulus-backend:
-
-⸻
-
-📘 modulus-backend/README.md
-
 # Modulus Backend
 
 Dette er backend-serveren for Modulus-prosjektet. Den er bygget med Express og TypeScript og håndterer blant annet autentisering via Feide/OIDC.
