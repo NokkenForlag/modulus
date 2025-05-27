@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./src/**/*.{html,js,svelte,ts,svx}'],
-  theme: {
-    extend: {},
+  plugins: {
+    '@tailwindcss/postcss': {},
+    autoprefixer: {},
   },
-  plugins: [
-    require('@tailwindcss/typography'),
-  ],
-};
+}
