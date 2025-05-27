@@ -11,32 +11,29 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
+    title: 'Utforskende matematikk',
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Modulus hjelper deg å bygge konseptuell forståelse uten å miste faglig overblikk. Vi vektlegger begrepsbygging, visuell støtte og rike problemløsningsoppgaver. Alt er strukturert for å stimulere utforskende og kreativ tenkning.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'Oversikt og sammenheng',
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Fagstoffet i Modulus er organisert tematisk og hierarkisk, slik at du alltid ser hvordan begreper henger sammen. Du får støtte til å bygge helhetlig forståelse – fra det konkrete til det abstrakte.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Visuell og interaktiv læring',
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Gjennom interaktive animasjoner, faglige illustrasjoner og tydelig grafisk presentasjon gir Modulus deg mer enn bare tekst – du får hjelp til å se, gripe og utforske matematikken.
       </>
     ),
   },
